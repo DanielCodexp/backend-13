@@ -16,8 +16,8 @@ export async function encryptNameController(req: express.Request, res: express.R
 
 export async function decryptNameController(req: express.Request, res: express.Response, next: NextFunction) {
     try {
-        const encryptedBase64 = req.body.encryptedBase64;
-        let serviceResponse = await encryptionService.decryptName(encryptedBase64);
+        const encryptedName = req.body.encryptedName;
+        let serviceResponse = await encryptionService.decryptName(encryptedName);
         res.status(200).send(<ApiResponse>{ status: HttpStatusCode.OK, message: "All Good!", data: serviceResponse });
     } catch (error) {
         next(error);
